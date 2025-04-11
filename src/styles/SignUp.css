@@ -1,0 +1,83 @@
+body {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    padding: 80px 20px 20px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 480px) {
+    .loginBox {
+        padding: 30px 20px;
+    }
+    .form-control {
+        height: 40px;
+        font-size: 14px;
+    }
+    .btn-primary {
+        height: 40px;
+        font-size: 16px;
+    }
+}
+
+.loginBox {
+    width: 90%;
+    max-width: 400px;
+    padding: 40px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+h3 {
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.form-control {
+    height: 45px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.form-control:focus {
+    border-color: #667eea;
+    box-shadow: 0px 0px 5px rgba(102, 126, 234, 0.5);
+}
+
+.btn-primary {
+    background: #667eea;
+    border: none;
+    height: 45px;
+    border-radius: 6px;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background: #564bda;
+}
+
+.forgot-password {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.forgot-password a {
+    color: #667eea;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}

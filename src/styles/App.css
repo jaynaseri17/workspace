@@ -1,0 +1,261 @@
+/* General Styling */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* App Container */
+
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+
+/* Header Styling */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    width: 100%;
+    padding: 0px 0;
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.header nav button {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.header nav button:hover {
+    text-decoration: underline;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-right input {
+    padding: 8px;
+    border-radius: 20px;
+    border: none;
+    margin-right: 10px;
+}
+
+.login-btn {
+    background: #ff9800;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.login-btn:hover {
+    background: #e68900;
+}
+
+
+/* Main Section */
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    width: 100%;
+    padding: 80px 0 0;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.main h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+
+/* Signup Button */
+
+.signup-btn {
+    background: #4caf50;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 20px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.signup-btn:hover {
+    background: #43a047;
+}
+
+
+/* File Upload Section */
+
+.file-upload {
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+}
+
+.upload-box label {
+    display: block;
+    background: #03a9f4;
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.upload-box label:hover {
+    background: #0288d1;
+}
+
+.output-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.buttons button {
+    background: #ff4081;
+    border: none;
+    padding: 8px 16px;
+    margin: 5px;
+    border-radius: 20px;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.buttons button:hover {
+    background: #e91e63;
+}
+
+
+/* Authentication Form */
+
+.auth-form {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 12px;
+    width: 350px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.form-toggle button {
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    background: transparent;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.form-toggle .active {
+    border-bottom: 2px solid #ff9800;
+}
+
+.auth-form h2 {
+    margin-bottom: 15px;
+}
+
+.auth-form form input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 6px;
+}
+
+.auth-form button {
+    background: #ff9800;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.auth-form button:hover {
+    background: #e68900;
+}
+
+
+/* Social Login */
+
+.social-login {
+    margin-top: 10px;
+}
+
+.google-btn,
+.org-btn {
+    background: #db4437;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 5px;
+    display: inline-flex;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.org-btn {
+    background: #4267b2;
+}
+
+.google-btn i,
+.org-btn i {
+    margin-right: 8px;
+}
+
+.google-btn:hover {
+    background: #c1351d;
+}
+
+.org-btn:hover {
+    background: #365899;
+}

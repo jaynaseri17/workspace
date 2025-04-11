@@ -1,147 +1,135 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "../index.css";
 
-export default class Welcome extends Component {
-  constructor(props){
-    super(props)
-    
-    this.state = {
-      username: ''
-    }
-  }
-
-  componentDidMount(){
-    let getUserDetails = JSON.parse(sessionStorage.getItem('userDetails'))
-    this.setState({
-      username: getUserDetails.username
-    })
-
-  }
-
-  logOut = (e) => {
-    e.preventDefault();
-    this.props.history.push('/signin')
-  }  
-  render() {
-    if (sessionStorage.getItem("userDetails") === null) {
-      this.props.history.push('/signup')
-    }else{
-    return (
-      <div>
-        <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-        <div class="container">
-          <a className="navbar-brand" href="#">
-            BS5
-          </a>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarsExampleDefault"
-            aria-controls="navbarsExampleDefault"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-
-          <div className="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul className="navbar-nav me-md-auto">
-              <li className="nav-item active">
-                <a className="nav-link" href="#">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Link
-                </a>
-              </li>
-            </ul>
-            <span className="navbar-text">
-              <Link className="nav-link" onClick={this.logOut}>
-                logout
-              </Link>
-            </span>
-          </div>
-        </div>
-        </nav>
-        <main role="main">
-          <div className="jumbotron">
-            <div className="container">
-              <h1 className="display-3">Hello, {this.state.username}!</h1>
-              <p>
-                This is a template for a simple marketing or informational
-                website. It includes a large callout called a jumbotron and
-                three supporting pieces of content. Use it as a starting point
-                to create something more unique.
-              </p>
-              <p>
-                <a className="btn btn-primary btn-lg" href="#" role="button">
-                  Learn more &raquo;
-                </a>
-              </p>
-            </div>
-          </div>
-
-          <div className="container">
-            <div className="row">
-              <div className="col-md-4">
-                <h2>Heading</h2>
-                <p>
-                  Donec id elit non mi porta gravida at eget metus. Fusce
-                  dapibus, tellus ac cursus commodo, tortor mauris condimentum
-                  nibh, ut fermentum massa justo sit amet risus. Etiam porta sem
-                  malesuada magna mollis euismod. Donec sed odio dui.{" "}
-                </p>
-                <p>
-                  <a className="btn btn-secondary" href="#" role="button">
-                    View details &raquo;
-                  </a>
-                </p>
-              </div>
-              <div className="col-md-4">
-                <h2>Heading</h2>
-                <p>
-                  Donec id elit non mi porta gravida at eget metus. Fusce
-                  dapibus, tellus ac cursus commodo, tortor mauris condimentum
-                  nibh, ut fermentum massa justo sit amet risus. Etiam porta sem
-                  malesuada magna mollis euismod. Donec sed odio dui.{" "}
-                </p>
-                <p>
-                  <a className="btn btn-secondary" href="#" role="button">
-                    View details &raquo;
-                  </a>
-                </p>
-              </div>
-              <div className="col-md-4">
-                <h2>Heading</h2>
-                <p>
-                  Donec sed odio dui. Cras justo odio, dapibus ac facilisis in,
-                  egestas eget quam. Vestibulum id ligula porta felis euismod
-                  semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                  condimentum nibh, ut fermentum massa justo sit amet risus.
-                </p>
-                <p>
-                  <a className="btn btn-secondary" href="#" role="button">
-                    View details &raquo;
-                  </a>
-                </p>
-              </div>
-            </div>
-
-            <hr />
-          </div>
-        </main>
-
-        <footer className="container">
-          <p>&copy; Company 2017-2019</p>
-        </footer>
-      </div>
+const Welcome = () => {
+    return ( <
+        div className = "welcome-container" >
+        <
+        Main / >
+        <
+        /div>
     );
-  }
-}
-}
+};
+
+const Main = () => {
+    return ( <
+        main className = "welcome-content" >
+        <
+        h1 className = "welcome-title" > Let 's begin writing...</h1> <
+        p className = "welcome-description" > Transform your ideas into reality with our powerful text editor. < /p> <
+        Link to = "/signup"
+        className = "btn btn-primary btn-lg mb-4" > Sign up
+        for free < /Link> <
+        div className = "row g-4" >
+        <
+        div className = "col-md-6" >
+        <
+        FileUpload / >
+        <
+        /div> <
+        div className = "col-md-6" >
+        <
+        AuthForm / >
+        <
+        /div> < /
+        div > <
+        /main>
+    );
+};
+
+const FileUpload = () => {
+    const [fileContent, setFileContent] = useState("");
+
+    const handleFileUpload = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => setFileContent(e.target.result);
+            reader.readAsText(file);
+        }
+    };
+
+    return ( <
+        div className = "file-upload" >
+        <
+        div className = "upload-box" >
+        <
+        label >
+        <
+        input type = "file"
+        onChange = { handleFileUpload }
+        hidden / >
+        <
+        p > Upload < /p> < /
+        label > <
+        /div> <
+        div className = "output-box" >
+        <
+        p > { fileContent || "Final Output" } < /p> < /
+        div > <
+        div className = "buttons" >
+        <
+        button > Convert < /button> <
+        button > Download < /button> < /
+        div > <
+        /div>
+    );
+};
+
+const AuthForm = () => {
+    const [isSignup, setIsSignup] = useState(false);
+
+    return ( <
+        section className = "auth-form" >
+        <
+        div className = "form-toggle" >
+        <
+        button className = {!isSignup ? "active" : "" }
+        onClick = {
+            () => setIsSignup(false)
+        } >
+        Login <
+        /button> <
+        button className = { isSignup ? "active" : "" }
+        onClick = {
+            () => setIsSignup(true)
+        } >
+        Sign up <
+        /button> < /
+        div > <
+        h2 > { isSignup ? "Sign Up" : "Login" } < /h2> <
+        form > {
+            isSignup && < input type = "text"
+            placeholder = "Name"
+            required / >
+        } <
+        input type = "email"
+        placeholder = "Email"
+        required / >
+        <
+        input type = "password"
+        placeholder = { isSignup ? "Create Password" : "Password" }
+        required / >
+        <
+        Link to = { isSignup ? "/signup" : "/signin" }
+        className = "btn btn-primary" > { isSignup ? "Sign Up" : "Login" } < /Link> < /
+        form > <
+        div className = "social-login" >
+        <
+        button className = "google-btn" >
+        <
+        i className = "fab fa-google" > < /i> Login with Google < /
+        button > <
+        button className = "org-btn" >
+        <
+        i className = "fas fa-building" > < /i> Login with Organization < /
+        button > <
+        /div> < /
+        section >
+    );
+};
+
+export default Welcome;
