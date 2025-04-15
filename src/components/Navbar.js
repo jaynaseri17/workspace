@@ -20,7 +20,7 @@ const Navbar = () => {
         div className = "nav-content" >
         <
         Link className = "nav-logo"
-        to = "/" > Write IT < /Link>
+        to = "/" > Write It < /Link>
 
         <
         button className = "nav-toggle"

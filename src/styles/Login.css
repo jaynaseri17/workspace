@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: var(--background-gradient);
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -26,10 +26,11 @@ body {
 .loginBox {
     width: 90%;
     max-width: 400px;
-    padding: 40px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
     text-align: center;
     margin: 0 auto;
 }
@@ -55,16 +56,19 @@ h3 {
 }
 
 .btn-primary {
-    background: #667eea;
+    background: var(--primary-color);
     border: none;
     height: 45px;
-    border-radius: 6px;
-    font-size: 18px;
-    transition: 0.3s;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: var(--transition);
+    color: white;
+    font-weight: 500;
 }
 
 .btn-primary:hover {
-    background: #564bda;
+    background: var(--secondary-color);
+    transform: translateY(-2px);
 }
 
 .custom-checkbox .custom-control-label {

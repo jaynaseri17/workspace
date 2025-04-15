@@ -1,20 +1,26 @@
 .footer {
     position: relative;
-    bottom: 0;
-    width: 100%;
+    width: 100vw;
     background: linear-gradient(135deg, #1e3c72, #2a5298);
     color: #fff;
-    padding: 1.5rem 0;
-    margin-top: auto;
+    padding: 3rem 0 2rem;
+    margin: 0;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .footer-content {
-    max-width: min(95%, 1200px);
+    width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 2.5rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 4rem;
+    position: relative;
 }
 
 .footer h5 {
@@ -31,9 +37,10 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 50px;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.2);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2));
+    border-radius: 2px;
 }
 
 .footer ul {
