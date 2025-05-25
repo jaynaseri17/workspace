@@ -16,6 +16,7 @@ import {
     FaImage,
     FaUpload
 } from "react-icons/fa";
+import axios from 'axios';
 
 const TextEditor = () => {
     const editorRef = useRef(null);
@@ -36,14 +37,34 @@ const TextEditor = () => {
         execCmd("fontSize", event.target.value);
     };
 
-    const handleImageUpload = (event) => {
+    const handleImageUpload = async (event) => {
         const file = event.target.files[0];
         if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                execCmd("insertImage", e.target.result);
-            };
-            reader.readAsDataURL(file);
+            try {
+                const formData = new FormData();
+                formData.append('image_input', file);
+
+                const response = await axios.post('http://localhost:8082/process-document', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                });
+
+                // Insert the processed text into the editor
+                if (response.data && response.data.text) {
+                    execCmd('insertText', response.data.text);
+                }
+
+                // You can also display the original image if needed
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    execCmd('insertImage', e.target.result);
+                };
+                reader.readAsDataURL(file);
+            } catch (error) {
+                console.error('Error processing document:', error);
+                alert('Error processing document. Please try again.');
+            }
         }
     };
 

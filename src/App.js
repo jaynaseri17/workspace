@@ -7,8 +7,8 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import Login from "./components/Login";
 import SignUp from "./components/Signup";
-import Welcome from "./components/Welcome";
-import ForgotPassword from "./components/ForgotPassword";
+import Welcome from "./components/welcome";
+import ForgotPassword from "./components/forgotpassword";
 import ProfilePage from "./components/ProfilePage";
 import ContactUs from "./components/ContactUs";
 import TextEditor from "./components/TextEditor";

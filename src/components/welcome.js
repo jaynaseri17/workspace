@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "../index.css";
@@ -41,41 +42,86 @@ const Main = () => {
 };
 
 const FileUpload = () => {
-    const [fileContent, setFileContent] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+    const [processedText, setProcessedText] = useState('');
+    const [error, setError] = useState(null);
 
-    const handleFileUpload = (event) => {
+    const handleImageUpload = async (event) => {
         const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => setFileContent(e.target.result);
-            reader.readAsText(file);
+        const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+
+        if (!file) return;
+
+        if (!allowedTypes.includes(file.type)) {
+            setError('Please upload a valid image file (JPG, JPEG, or PNG)');
+            return;
+        }
+
+        setIsLoading(true);
+        setError(null);
+
+        try {
+            const formData = new FormData();
+            formData.append('image_input', file);
+
+            const response = await axios.post('http://localhost:8082/process-document', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+
+            if (response.data && response.data.text_extraction && response.data.text_extraction.length > 0) {
+                const extractedText = response.data.text_extraction.map(item => item.text).join('\n');
+                setProcessedText(extractedText);
+            } else {
+                setError('No text was extracted from the image. Please ensure the image contains clear, readable text.');
+            }
+        } catch (error) {
+            console.error('Error processing document:', error);
+            setError('Error processing document. Please try again.');
+        } finally {
+            setIsLoading(false);
         }
     };
 
-    return ( <
-        div className = "file-upload" >
-        <
-        div className = "upload-box" >
-        <
-        label >
-        <
-        input type = "file"
-        onChange = { handleFileUpload }
-        hidden / >
-        <
-        p > Upload < /p> < /
-        label > <
-        /div> <
-        div className = "output-box" >
-        <
-        p > { fileContent || "Final Output" } < /p> < /
-        div > <
-        div className = "buttons" >
-        <
-        button > Convert < /button> <
-        button > Download < /button> < /
-        div > <
-        /div>
+    const handleTextChange = (event) => {
+        setProcessedText(event.target.value);
+    };
+
+    return (
+        <div className="file-upload">
+            <div className="upload-box">
+                <label>
+                    <input
+                        type="file"
+                        accept=".jpg,.jpeg,.png"
+                        onChange={handleImageUpload}
+                        hidden
+                    />
+                    <p>Upload Image</p>
+                </label>
+            </div>
+
+            {error && <div className="error-message">{error}</div>}
+            
+            {isLoading && (
+                <div className="loading-spinner">
+                    <div className="spinner"></div>
+                    <p>Processing your image...</p>
+                </div>
+            )}
+
+            {processedText && (
+                <div className="output-box">
+                    <textarea
+                        value={processedText}
+                        onChange={handleTextChange}
+                        className="text-output"
+                        placeholder="Processed text will appear here..."
+                    />
+                </div>
+            )}
+        </div>
     );
 };
 
@@ -131,5 +177,7 @@ const AuthForm = () => {
         section >
     );
 };
+
+import "./Welcome.css";
 
 export default Welcome;
